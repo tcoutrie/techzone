@@ -39,8 +39,8 @@ def auth():
     raise
 
 token = auth()
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 def postattributemap():
   uri = "/api/fdm/v6/object/ldapattributemaps"
   ad_url = protocol+url+uri
@@ -80,15 +80,17 @@ def postattributemap():
 
   if response.status_code == 200:
     print("Created LDAP attribute map")
+    map = response.json
+    return map
   else:
     print(response.status_code)
     pprint(response.content)
     def revoke():
       print("Access token revoked")
 
+pprint(postattributemap())
 
-
-postattributemap()
+#postattributemap()
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -58,7 +58,6 @@ def getactivedirectory():
   else:
     print(response.status_code)
   
-AD_reponse = getactivedirectory()
 
 pprint(getactivedirectory())
 
