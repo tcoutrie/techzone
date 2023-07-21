@@ -79,10 +79,14 @@ def deploy():
 
   response = requests.get(deploy, headers=headers, data=data,verify=False)
   if response.status_code == 200:
-    pprint(response.content)
+    print(response.status_code)
+    status = response.json()['items'][0]['statusMessage']
+    return status
   else:
     print(response.status_code)
     pass
+    
+status = deploy()
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -119,6 +123,7 @@ def deploy2():
 
   response = requests.post(deploy, headers=headers, data=data,verify=False)
   if response.status_code == 200:
+    print(response.status_code)
     print('Deploying')
   else:
     print(response.status_code)
@@ -166,6 +171,7 @@ Enter Exit to exit
 > """).lower()
   if x == "1":
     deploy()
+    pprint('Status is: ' + status)
   elif x == "2":
     deploy2()
   elif x == "exit":

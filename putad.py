@@ -40,7 +40,7 @@ token = auth()
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 def put():
-  objId = input('object id> ')
+  objId = input('object id of active directory object> ')
   uri = "/api/fdm/v6/object/realms/"
   ad_url = protocol+url+uri+objId
 
@@ -75,7 +75,7 @@ def put():
   "dirPassword": "*********",
   "baseDN": "dc=cisco,dc=com",
   "ldapAttributeMap": {
-    "id": "2c7b3f25-26fd-11ee-a635-fd06258c4ec8",
+    "id": "7fbf5798-27c9-11ee-a635-a1f4b2c2e66b",
     "type": "ldapattributemap"
   },
   "adPrimaryDomain": "cisco.com",

@@ -40,7 +40,7 @@ token = auth()
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 def getactivedirectory():
-  uri = "/api/fdm/v6/object/realmss"
+  uri = "/api/fdm/v6/object/realms"
   ad_url = protocol+url+uri
 
   headers = {
