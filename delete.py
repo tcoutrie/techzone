@@ -32,17 +32,15 @@ def auth():
 #Error Checking
   if response.status_code == 400:
     raise Exception("Error Received: {}".format(response.content))
-  try:
+  else:
     access_token = response.json()['access_token']
     return access_token
-  except:
-    raise
 
 token = auth()
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 def delete():
-  objId = input('object id> ')
+  objId = input('object id to delete> ')
   uri = "/api/fdm/v6/object/realms/"
   ad_url = protocol+url+uri+objId
 
@@ -53,15 +51,16 @@ def delete():
     "Authorization":"Bearer {}".format(token)
   }
 
-   response = requests.delete(ad_url, headers=headers, verify=False)
+  response = requests.delete(ad_url, headers=headers, verify=False)
 
-
+  
   if response.status_code == 204:
     print('Object removed')
   else:
-    raise Exception("Error Received: {}".format(response.content))
-    def revoke():
-      print("Access token revoked")
+    print("Error Received: {}".format(response.content))
+    pass
+
+delete()
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

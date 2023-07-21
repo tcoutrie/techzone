@@ -32,11 +32,9 @@ def auth():
 #Error Checking
   if response.status_code == 400:
     raise Exception("Error Received: {}".format(response.content))
-  try:
+  else:
     access_token = response.json()['access_token']
     return access_token
-  except:
-    raise
 
 token = auth()
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -93,9 +91,8 @@ def put():
   if response.status_code == 200:
     print("Updated Object")
   else:
-    raise Exception("Error Received: {}".format(response.content))
-    def revoke():
-      print("Access token revoked")
+    pprint("Error Received: {}".format(response.content))
+    pass
 
 put()
 

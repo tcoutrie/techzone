@@ -32,11 +32,10 @@ def auth():
 #Error Checking
   if response.status_code == 400:
     raise Exception("Error Received: {}".format(response.content))
-  try:
+  else:
     access_token = response.json()['access_token']
     return access_token
-  except:
-    raise
+
 
 token = auth()
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -70,12 +69,13 @@ def deploy():
   }
 
   data = json.dumps(payload)
-  
+
   response = requests.post(deploy, headers=headers, data=data,verify=False)
   if response.status_code == 200:
     print('Deploying')
   else:
     print(response.status_code)
+    pass
 
 deploy()
 

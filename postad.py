@@ -32,11 +32,9 @@ def auth():
 #Error Checking
   if response.status_code == 400:
     raise Exception("Error Received: {}".format(response.content))
-  try:
+  else:
     access_token = response.json()['access_token']
     return access_token
-  except:
-    raise
 
 token = auth()
 
@@ -79,18 +77,19 @@ def postattributemap():
   response = requests.post(ad_url, headers=headers, data=data, verify=False)
 
   if response.status_code == 200:
+    print(response.status_code)
     print("Created LDAP attribute map")
     map = response.json
     return map
   else:
     print(response.status_code)
     pprint(response.content)
-    def revoke():
-      print("Access token revoked")
+    pass
 
-pprint(postattributemap())
 
-#postattributemap()
+
+postattributemap()
+
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
